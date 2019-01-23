@@ -1,0 +1,23 @@
+[gui]
+        recentrepo = G:/JS/repos
+[user]
+        email = IRuss23@yandex.ru
+        name = hyrdbyrd
+[merge]
+        summary = true
+[filter "lfs"]
+        process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+[core]
+        eol = lf
+        autocrlf = false
+[alias]
+        ci = commit
+        co = checkout
+        st = status
+        b = branch
+        hist = log --oneline --graph
+[log]
+        decorate = short
