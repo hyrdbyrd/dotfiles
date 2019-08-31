@@ -52,10 +52,37 @@
     "title": "⭐️",
     "align": "right",
     "items": [
-      { "type": "close" },
+      { "type": "close", "align": "left" },
+      {
+        "comment": "music.yandex.ru",
+        "type": "appleScriptTitledButton",
+        "refreshInterval": 1,
+        "source": {
+          "inline": "set result to \"Музыка\"\n\nif application \"Yandex\" is running then\n\ttell application \"Yandex\"\n\t\trepeat with w in (every window)\n\t\t\trepeat with t in (every tab whose URL contains \"music.yandex.ru\") of w\n\t\t\t\tset res to execute t javascript \"(() => {\n\t\t\tconst title = document.querySelector('.player-controls .d-link.deco-link.track__title');\n\t\t\tconst artists = Array.from(document.querySelector('.player-controls .d-artists').children).filter(artist => artist.text).map(artist => artist.innerText).join(', ');\n\t\t\tconst liked = document.querySelector('.player-controls .d-like.d-like_on') ? '♥️' : '';\n\t\t\tconst disliked = document.querySelector('.player-controls .dislike.dislike_on') ? '\uD83D\uDEAB' : '';\n\n\t\t\tconst playButton = document.querySelector('.player-controls .d-icon.d-icon_play').parentElement;\n\n\t\t\tconst controll = playButton.classList.contains('player-controls__btn_pause')\n\t\t\t\t? '⏸'\n\t\t\t\t: '▶️';\n\n\t\t\treturn `${artists} - ${title.innerText} ${[liked, disliked, controll].filter(Boolean).join(' ')}`;\n\t  })()\"\n\t\t\tend repeat\n\t\tend repeat\n\t\t\n\t\tif res is equal to missing value then\n\t\t\tset result to \"Музыка\"\n\t\telse\n\t\t\tset result to res\n\t\tend if\n\tend tell\nend if"
+        },
+        "image": {
+          "base64": "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"
+        },
+        "align": "right"
+      },
+      {
+        "type": "previous",
+        "width": 80,
+        "align": "right"
+      },
+      {
+        "type": "play",
+        "width": 80,
+        "align": "right"
+      },
+      {
+        "type": "next",
+        "width": 80,
+        "align": "right"
+      },
       {
         "type": "staticButton",
-        "title": "👎",
+        "title": "🚫",
         "width": 120,
         "align": "right",
         "action": "appleScript",
